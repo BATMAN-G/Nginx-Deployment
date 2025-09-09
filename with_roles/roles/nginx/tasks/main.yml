@@ -1,0 +1,19 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Update listen port
+  lineinfile:
+    path: /etc/nginx/sites-available/default
+    regexp: 'listen 80 default_server;'
+    line: 'listen 8080 default_server;'
+  notify: restart nginx
+
+- name: Deploy dynamic index
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: restart nginx
+

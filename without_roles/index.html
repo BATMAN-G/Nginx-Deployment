@@ -1,0 +1,9 @@
+
+<html>
+  <head><title>Welcome to {{ ansible_hostname }}</title></head>
+  <body>
+    <h1>Hello from {{ ansible_hostname }}</h1>
+    <p>IP Address: {{ ansible_default_ipv4.address }}</p>
+    <p>Served on port 8080 </p>
+  </body>
+</html>
